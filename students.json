@@ -1,0 +1,133 @@
+[
+  {
+    "$type": "StudentSys.UndergraduateStudent, final",
+    "Major": "Engenharia Mecatrónica",
+    "Year": 2,
+    "Name": "Tomás Dias",
+    "StudentID": 29801,
+    "Email": "tomasvieiradias@gmail.com",
+    "GPA": 12.5,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Programação",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 10.0,
+        "Date": "2025-12-02T21:19:00.9534736+00:00"
+      },
+      {
+        "Course": {
+          "Name": "Mecânica Aplicada",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 15.0,
+        "Date": "2025-12-02T21:19:39.9141541+00:00"
+      }
+    ],
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 500.0
+      }
+    ]
+  },
+  {
+    "$type": "StudentSys.UndergraduateStudent, final",
+    "Major": "Gestão",
+    "Year": 1,
+    "Name": "Nuno Venda",
+    "StudentID": 29807,
+    "Email": "nunovenda@gmail.com",
+    "GPA": 13.0,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Investigação Operacional",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 10.0,
+        "Date": "2025-12-02T21:17:29.3772671+00:00"
+      },
+      {
+        "Course": {
+          "Name": "Fundamentos",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 16.0,
+        "Date": "2025-12-02T21:17:50.4001348+00:00"
+      }
+    ],
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 1500.0
+      }
+    ]
+  },
+  {
+    "$type": "StudentSys.InternationalStudent, final",
+    "Country": "Angola",
+    "VisaStatus": "Angolano",
+    "Name": "Dario Trovoada",
+    "StudentID": 29800,
+    "Email": "dariotrovoada@gmail.com",
+    "GPA": 16.5,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Investigação Operacional",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 18.0,
+        "Date": "2025-12-02T21:22:29.7162113+00:00"
+      },
+      {
+        "Course": {
+          "Name": "Mecânica Aplicada",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 15.0,
+        "Date": "2025-12-02T21:22:49.0448455+00:00"
+      }
+    ],
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 5000.0
+      }
+    ]
+  },
+  {
+    "$type": "StudentSys.GraduateStudent, final",
+    "ThesisTopic": "Sistemas Geográficos",
+    "Advisor": "Paulo Caldas",
+    "Name": "Catarina Dias",
+    "StudentID": 29700,
+    "Email": "catarinadias@gmail.com",
+    "GPA": 15.0,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Geografia",
+          "Code": "N/A",
+          "Credits": 6
+        },
+        "Value": 15.0,
+        "Date": "2025-12-02T21:24:49.2583022+00:00"
+      }
+    ],
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 3000.0
+      }
+    ]
+  }
+]

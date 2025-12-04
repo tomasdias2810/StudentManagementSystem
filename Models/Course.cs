@@ -15,4 +15,4 @@ namespace StudentSys
             Professor = professor;
         }
     }
-}
+} 

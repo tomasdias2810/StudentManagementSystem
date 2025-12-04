@@ -1,42 +1,47 @@
 using System.Collections.Generic;
-using System.IO;           // Para escrever e ler ficheiros
-using Newtonsoft.Json;     // A biblioteca que traduz C# para Texto (JSON)
+using System.IO;           // Para escrever e ler ficheiros no disco
+using Newtonsoft.Json;     // Biblioteca externa para lidar com formato JSON
+using StudentSys;
 
 namespace StudentSys
 {
+    // Classe estática (Static): Não precisa de ser instanciada (new FileService).
+    // Funciona como uma caixa de ferramentas.
     public static class FileService
     {
-        // Caminho do ficheiro onde os dados ficam guardados
+        // Define o nome do ficheiro onde os dados ficam guardados.
         private static string filePath = "students.json";
 
-        // Método para guardar (Serialização)
+        // --- SERIALIZAÇÃO (GUARDAR) ---
+        // Transforma a lista de objetos C# em texto JSON.
         public static void SaveData(List<Student> students)
         {
-            // TypeNameHandling.Auto é CRUCIAL!
-            // Permite guardar no JSON que o aluno X é "Undergraduate" e o Y é "International".
-            // Sem isto, ao carregar, eles voltariam todos como "Student" genérico e perdíamos as propinas certas.
+            // 'TypeNameHandling.Auto' é o segredo! 
+            // Permite guardar no ficheiro QUE TIPO de aluno é (Licenciatura, Mestrado...).
+            // Sem isto, perdíamos o Polimorfismo ao carregar.
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             
-            // Transforma a lista de objetos num texto bonito (Indented)
+            // Converte para texto formatado (Indented).
             string json = JsonConvert.SerializeObject(students, Formatting.Indented, settings);
             
-            // Escreve o texto no disco
+            // Escreve o texto no disco rígido.
             File.WriteAllText(filePath, json);
         }
 
-        // Método para carregar (Deserialização)
+        // --- DESERIALIZAÇÃO (CARREGAR) ---
+        // Transforma o texto JSON de volta em objetos C#.
         public static List<Student> LoadData()
         {
-            // Verifica se o ficheiro existe para não dar erro
+            // Verifica se o ficheiro existe para o programa não crashar na primeira vez.
             if (!File.Exists(filePath)) return new List<Student>();
 
-            // Lê o texto todo do ficheiro
+            // Lê todo o texto do ficheiro.
             string json = File.ReadAllText(filePath);
             
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             
-            // Transforma o texto de volta numa Lista de Estudantes
-            // O '?? new List<Student>()' serve para criar uma lista vazia se algo correr mal, para o programa não crashar.
+            // Converte o texto em Lista de Estudantes.
+            // O operador '??' garante que se algo falhar, devolvemos uma lista vazia em vez de null.
             return JsonConvert.DeserializeObject<List<Student>>(json, settings) ?? new List<Student>();
         }
     }

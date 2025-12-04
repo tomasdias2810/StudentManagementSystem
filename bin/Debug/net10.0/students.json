@@ -56,5 +56,77 @@
         "MinGPA": 10.0
       }
     ]
+  },
+  {
+    "$type": "StudentSys.GraduateStudent, final",
+    "ThesisTopic": "Gestão",
+    "Advisor": "Paulo Caldas",
+    "Name": "Nuno Venda",
+    "StudentID": 29807,
+    "Email": "nunovenda@gmail.com",
+    "GPA": 14.0,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Gestão de Projetos",
+          "Code": "GP",
+          "Credits": 5,
+          "Professor": "Abelino Rocha"
+        },
+        "Value": 14.0,
+        "Date": "2025-12-04T17:52:52.8933063+00:00"
+      }
+    ],
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 1000.0,
+        "MinGPA": 14.0
+      }
+    ]
+  },
+  {
+    "$type": "StudentSys.InternationalStudent, final",
+    "Country": "Angola",
+    "VisaStatus": "Angolano",
+    "Name": "Dário Trovoada",
+    "StudentID": 29000,
+    "Email": "dariotrovoada@gmail.com",
+    "GPA": 14.0,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Designer",
+          "Code": "Desi",
+          "Credits": 5,
+          "Professor": "Asdruval Rocha"
+        },
+        "Value": 14.0,
+        "Date": "2025-12-04T17:55:50.9832605+00:00"
+      }
+    ],
+    "Scholarships": []
+  },
+  {
+    "$type": "StudentSys.UndergraduateStudent, final",
+    "Major": "Eng.Mecânica",
+    "Year": 2,
+    "Name": "Luis Silva",
+    "StudentID": 29806,
+    "Email": "luissilva@gmail.com",
+    "GPA": 8.0,
+    "Grades": [
+      {
+        "Course": {
+          "Name": "Ciencia dos Materiais",
+          "Code": "CDM",
+          "Credits": 5,
+          "Professor": "Arlete Ribeiro"
+        },
+        "Value": 8.0,
+        "Date": "2025-12-04T18:02:21.8477799+00:00"
+      }
+    ],
+    "Scholarships": []
   }
 ]

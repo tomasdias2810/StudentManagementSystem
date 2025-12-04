@@ -4,9 +4,8 @@ namespace StudentSys
     {
         public string Name { get; set; }
         public decimal Amount { get; set; }
-        public decimal MinGPA { get; set; } // NOVO: Média mínima exigida
+        public decimal MinGPA { get; set; } // Propriedade nova: Média Mínima
 
-        // Construtor atualizado
         public Scholarship(string name, decimal amount, decimal minGpa)
         {
             Name = name;
@@ -14,20 +13,22 @@ namespace StudentSys
             MinGPA = minGpa;
         }
 
-        // O MÉTODO DO SLIDE 6
-        // Verifica se a média do aluno é maior ou igual ao mínimo exigido
+        // --- LÓGICA DE NEGÓCIO ---
+        // Este método recebe um Aluno e decide se ele pode receber a bolsa.
+        // Cumpre o requisito do Slide 6: "bool IsEligible(Student s)"
         public bool IsEligible(Student s)
         {
-            // Garante que a média está atualizada antes de comparar
+            // Atualiza a média antes de comparar
             s.CalculateGPA();
             
+            // Se a média do aluno for maior ou igual ao mínimo exigido...
             if (s.GPA >= MinGPA)
             {
-                return true; // Qualifica-se
+                return true; // ...aprovado!
             }
             else
             {
-                return false; // Não se qualifica
+                return false; // ...reprovado.
             }
         }
     }

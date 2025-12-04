@@ -1,85 +1,59 @@
 [
   {
     "$type": "StudentSys.UndergraduateStudent, final",
-    "Major": "Engenharia Mecatrónica",
+    "Major": "Eng.Mecatrónica",
     "Year": 2,
-    "Name": "Tomás Dias",
+    "Name": "Tomás Vieira Dias",
     "StudentID": 29801,
     "Email": "tomasvieiradias@gmail.com",
-    "GPA": 0.0,
+    "GPA": 11.0,
     "Grades": [
       {
         "Course": {
-          "Name": "Sistemas Digitais",
-          "Code": "N/A",
-          "Credits": 6,
-          "Professor": null
+          "Name": "Programação",
+          "Code": "Progoo",
+          "Credits": 5,
+          "Professor": "Abel Dantas"
+        },
+        "Value": 12.0,
+        "Date": "2025-12-04T16:10:20.4383336+00:00"
+      },
+      {
+        "Course": {
+          "Name": "Investigação Operacional",
+          "Code": "IO",
+          "Credits": 5,
+          "Professor": "Quitéria Mourão"
+        },
+        "Value": 14.0,
+        "Date": "2025-12-04T16:10:47.9767419+00:00"
+      },
+      {
+        "Course": {
+          "Name": "Sistemas Digitais Microcontroladores",
+          "Code": "SDMicro",
+          "Credits": 5,
+          "Professor": "Carlos Abreu"
         },
         "Value": 10.0,
-        "Date": "2025-12-02T21:15:26.535927+00:00"
+        "Date": "2025-12-04T16:11:27.7976457+00:00"
       },
       {
         "Course": {
           "Name": "Mecânica Aplicada",
-          "Code": "N/A",
-          "Credits": 6,
-          "Professor": null
-        },
-        "Value": 7.0,
-        "Date": "2025-12-02T21:15:50.3554477+00:00"
-      },
-      {
-        "Course": {
-          "Name": "Programação",
-          "Code": "Prog",
+          "Code": "5",
           "Credits": 5,
-          "Professor": "Abel Dantas"
+          "Professor": "Adélio Cavadas"
         },
-        "Value": 10.0,
-        "Date": "2025-12-02T21:38:44.9692809+00:00"
+        "Value": 8.0,
+        "Date": "2025-12-04T16:11:50.8885681+00:00"
       }
     ],
     "Scholarships": [
       {
         "Name": "SAS",
-        "Amount": 1400.0
-      }
-    ]
-  },
-  {
-    "$type": "StudentSys.UndergraduateStudent, final",
-    "Major": "Eng.Mecatrónica",
-    "Year": 2,
-    "Name": "Nuno Venda",
-    "StudentID": 29807,
-    "Email": "nunovenda@gmail.com",
-    "GPA": 13.0,
-    "Grades": [
-      {
-        "Course": {
-          "Name": "Prog",
-          "Code": "Poo",
-          "Credits": 5,
-          "Professor": "Abel Dantas"
-        },
-        "Value": 16.0,
-        "Date": "2025-12-04T10:06:48.1962332+00:00"
-      },
-      {
-        "Course": {
-          "Name": "Sistemas DIgitais",
-          "Code": "SDMicro",
-          "Credits": 4,
-          "Professor": "Capitao"
-        },
-        "Value": 10.0,
-        "Date": "2025-12-04T10:07:21.5781967+00:00"
-      }
-    ],
-    "Scholarships": [
-      {
-        "Name": "SAS",
-        "Amount": 500.0
+        "Amount": 500.0,
+        "MinGPA": 10.0
       }
     ]
   }

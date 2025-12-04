@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq; // Necessário para somar as bolsas (.Sum)
-using StudentSys;  // <--- ESTA LINHA É A QUE TIRA O VERMELHO!
+using System.Linq; 
+using StudentSys;
 
 class Program
 {
@@ -9,7 +9,7 @@ class Program
 
     static void Main(string[] args)
     {
-        // 1. Tentar carregar dados do ficheiro
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         students = FileService.LoadData();
         Console.WriteLine($"[SISTEMA] Dados carregados. Total: {students.Count}");
 
@@ -24,7 +24,8 @@ class Program
             Console.WriteLine("2. Adicionar Novo Estudante");
             Console.WriteLine("3. Adicionar Disciplina e Nota");
             Console.WriteLine("4. Atribuir Bolsa");
-            Console.WriteLine("5. Guardar Dados (Manual)");
+            Console.WriteLine("5. Remover Estudante");
+            Console.WriteLine("6. Guardar Dados (Manual)");
             Console.WriteLine("0. Guardar e Sair");
             Console.Write("\nEscolha: ");
 
@@ -36,17 +37,17 @@ class Program
                 case "2": AddStudentMenu(); break;
                 case "3": AddGradeMenu(); break;
                 case "4": AddScholarshipMenu(); break;
-                case "5": 
+                case "5": RemoveStudentMenu(); break;
+                case "6": 
                     FileService.SaveData(students); 
-                    Console.WriteLine("Guardado com sucesso!"); 
+                    Console.WriteLine("Guardado."); 
                     break;
                 case "0": 
                     FileService.SaveData(students); 
-                    Console.WriteLine("A guardar e a sair...");
                     running = false; 
                     break;
                 default: 
-                    Console.WriteLine("Opção inválida."); 
+                    Console.WriteLine("Inválido."); 
                     break;
             }
 
@@ -56,6 +57,21 @@ class Program
 
     // --- MÉTODOS ---
 
+    static void RemoveStudentMenu()
+    {
+        Console.WriteLine("\n--- REMOVER ESTUDANTE ---");
+        Console.Write("Número de Aluno a remover: "); // MUDADO
+        if (int.TryParse(Console.ReadLine(), out int id))
+        {
+            Student s = students.Find(x => x.StudentID == id);
+            if (s == null) { Console.WriteLine("Estudante não encontrado!"); return; }
+            students.Remove(s);
+            FileService.SaveData(students);
+            Console.WriteLine($"Estudante '{s.Name}' foi apagado do sistema.");
+        }
+        else Console.WriteLine("Número inválido.");
+    }
+
     static void ListStudents()
     {
         Console.WriteLine("\n--- PAUTA DETALHADA ---");
@@ -63,10 +79,8 @@ class Program
 
         foreach (var s in students)
         {
-            // Mostra os dados básicos (ID, Nome, Média Colorida)
-            s.DisplayInfo(); 
+            s.DisplayInfo();
 
-            // 1. MOSTRAR AS DISCIPLINAS
             if (s.Grades.Count > 0)
             {
                 Console.WriteLine(" -> Histórico de Disciplinas:");
@@ -82,23 +96,28 @@ class Program
                 Console.WriteLine(" -> Sem notas registadas.");
             }
 
-            // 2. PARTE FINANCEIRA
             decimal tuition = s.CalculateTuition();
             decimal totalScholarship = s.Scholarships.Sum(x => x.Amount);
-            decimal finalToPay = tuition - totalScholarship;
+
+            string tipoPortugues = "Desconhecido";
+            string tipoIngles = s.GetType().Name;
+
+            if (tipoIngles == "UndergraduateStudent") tipoPortugues = "Licenciatura";
+            else if (tipoIngles == "GraduateStudent") tipoPortugues = "Mestrado";
+            else if (tipoIngles == "InternationalStudent") tipoPortugues = "Internacional";
 
             Console.WriteLine("    -------------------------");
-            Console.WriteLine($"    Tipo: {s.GetType().Name.Replace("Student", "")}");
-            Console.WriteLine($"    Propina Base: {tuition}€");
+            Console.WriteLine($"    Tipo: {tipoPortugues}");
+            Console.WriteLine($"    Propina Base: {tuition:0}€");
             
             if (totalScholarship > 0) 
             {
-                Console.WriteLine($"    Bolsas: -{totalScholarship}€");
+                Console.WriteLine($"    Bolsas Atribuídas: {totalScholarship:0}€");
+                foreach(var b in s.Scholarships)
+                {
+                    Console.WriteLine($"      (Bolsa {b.Name}: {b.Amount:0}€)");
+                }
             }
-
-            if (finalToPay > 0) Console.WriteLine($"    TOTAL A PAGAR: {finalToPay}€");
-            else if (finalToPay < 0) Console.WriteLine($"    CRÉDITO A RECEBER: {-finalToPay}€");
-            else Console.WriteLine($"    CONTA SALDADA (0€)");
             
             Console.WriteLine("-----------------------------");
         }
@@ -107,7 +126,7 @@ class Program
     static void AddGradeMenu()
     {
         Console.WriteLine("\n--- LANÇAR NOTA E DISCIPLINA ---");
-        Console.Write("ID do Estudante: ");
+        Console.Write("Número de Aluno: "); // MUDADO
         if (int.TryParse(Console.ReadLine(), out int id))
         {
             Student s = students.Find(x => x.StudentID == id);
@@ -131,7 +150,7 @@ class Program
             }
             else Console.WriteLine("Nota inválida.");
         }
-        else Console.WriteLine("ID inválido.");
+        else Console.WriteLine("Número inválido.");
     }
 
     static void AddStudentMenu()
@@ -140,7 +159,7 @@ class Program
         {
             Console.WriteLine("\n--- ADICIONAR ESTUDANTE ---");
             Console.Write("Nome: "); string name = Console.ReadLine();
-            Console.Write("ID: "); int id = int.Parse(Console.ReadLine()); 
+            Console.Write("Número de Aluno: "); int id = int.Parse(Console.ReadLine()); // MUDADO
             Console.Write("Email: "); string email = Console.ReadLine();
             Console.WriteLine("1. Licenciatura | 2. Mestrado | 3. Internacional");
             string type = Console.ReadLine();
@@ -170,7 +189,7 @@ class Program
     static void AddScholarshipMenu()
     {
         Console.WriteLine("\n--- ATRIBUIR BOLSA ---");
-        Console.Write("ID: ");
+        Console.Write("Número de Aluno: "); // MUDADO
         if (int.TryParse(Console.ReadLine(), out int id))
         {
             Student s = students.Find(x => x.StudentID == id);
@@ -178,12 +197,28 @@ class Program
             {
                 Console.Write("Nome da Bolsa: "); string name = Console.ReadLine();
                 Console.Write("Valor (€): ");
-                if (decimal.TryParse(Console.ReadLine(), out decimal amount)) {
-                    s.Scholarships.Add(new Scholarship(name, amount));
-                    FileService.SaveData(students);
-                    Console.WriteLine("Bolsa atribuída.");
+                decimal.TryParse(Console.ReadLine(), out decimal amount);
+                Console.Write("Média Mínima Exigida: ");
+                
+                if (decimal.TryParse(Console.ReadLine(), out decimal minGpa)) {
+                    Scholarship bolsa = new Scholarship(name, amount, minGpa);
+                    if (bolsa.IsEligible(s))
+                    {
+                        s.Scholarships.Add(bolsa);
+                        FileService.SaveData(students);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(">>> SUCESSO! Bolsa atribuída.");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($">>> RECUSADO. Média insuficiente.");
+                        Console.ResetColor();
+                    }
                 }
             }
+            else Console.WriteLine("Aluno não encontrado.");
         }
     }
 }

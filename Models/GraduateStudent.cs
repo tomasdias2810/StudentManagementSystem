@@ -1,11 +1,13 @@
 namespace StudentSys
 {
+    // HERANÇA: Herda de Student
     public class GraduateStudent : Student
     {
-        // Propriedades específicas de Mestrado
+        // Dados específicos de quem está em Mestrado/Doutoramento
         public string ThesisTopic { get; set; } // Tema da Tese
-        public string Advisor { get; set; }     // Orientador
+        public string Advisor { get; set; }     // Nome do Orientador
 
+        // Construtor que passa os dados básicos ao pai (: base)
         public GraduateStudent(string name, int id, string email, string thesis, string advisor) 
             : base(name, id, email)
         {
@@ -13,7 +15,8 @@ namespace StudentSys
             Advisor = advisor;
         }
 
-        // Polimorfismo: Mestrado paga mais caro
+        // POLIMORFISMO (OVERRIDE):
+        // Alunos de mestrado pagam um valor intermédio (2000€).
         public override decimal CalculateTuition()
         {
             return 2000m; 

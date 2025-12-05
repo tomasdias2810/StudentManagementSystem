@@ -6,7 +6,7 @@
     "Name": "Tomás Vieira Dias",
     "StudentID": 29801,
     "Email": "tomasvieiradias@gmail.com",
-    "GPA": 11.0,
+    "GPA": 0.0,
     "Grades": [
       {
         "Course": {
@@ -64,7 +64,7 @@
     "Name": "Nuno Venda",
     "StudentID": 29807,
     "Email": "nunovenda@gmail.com",
-    "GPA": 14.0,
+    "GPA": 0.0,
     "Grades": [
       {
         "Course": {
@@ -92,7 +92,7 @@
     "Name": "Dário Trovoada",
     "StudentID": 29000,
     "Email": "dariotrovoada@gmail.com",
-    "GPA": 14.0,
+    "GPA": 0.0,
     "Grades": [
       {
         "Course": {
@@ -120,7 +120,7 @@
     "Name": "Luis Silva",
     "StudentID": 29806,
     "Email": "luissilva@gmail.com",
-    "GPA": 8.0,
+    "GPA": 0.0,
     "Grades": [
       {
         "Course": {

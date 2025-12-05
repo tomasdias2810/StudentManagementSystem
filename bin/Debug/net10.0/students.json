@@ -105,7 +105,13 @@
         "Date": "2025-12-04T17:55:50.9832605+00:00"
       }
     ],
-    "Scholarships": []
+    "Scholarships": [
+      {
+        "Name": "SAS",
+        "Amount": 3000.0,
+        "MinGPA": 10.0
+      }
+    ]
   },
   {
     "$type": "StudentSys.UndergraduateStudent, final",

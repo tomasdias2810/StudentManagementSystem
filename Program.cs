@@ -283,7 +283,7 @@ class Program
                 if (decimal.TryParse(Console.ReadLine(), out decimal minGpa)) {
                     Scholarship bolsa = new Scholarship(name, amount, minGpa);
                     
-                    // LÓGICA DE NEGÓCIO: Verifica elegibilidade (Requisito slide 6).
+                    // LÓGICA DE NEGÓCIO: Verifica elegibilidade
                     if (bolsa.IsEligible(s))
                     {
                         s.Scholarships.Add(bolsa); // Adiciona à lista.
